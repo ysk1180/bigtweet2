@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bigtweet2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- ファビコン設定 -->
+    <%= favicon_link_tag %>
+
+    <!-- レスポンシブ対応 -->
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Twitterカード -->
+    <% twitter_card = get_twitter_card_info(@hash ? @hash : nil) %>
+    <meta name="twitter:card" content=<%=twitter_card[:card]%> />
+    <meta property="og:url" content=<%=twitter_card[:url]%> />
+    <meta property="og:title" content=<%=twitter_card[:title]%> />
+    <meta property="og:description" content=<%=twitter_card[:description]%> />
+    <meta property="og:image" content=<%=twitter_card[:image]%> />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <%= analytics_init if Rails.env.production? %>
+  </head>
+
+  <body>
+    <% if notice %>
+      <p class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">close</span>
+      </button>
+      <%= notice %>
+      </p>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+  <footer>
+    <div class="container">
+      <a href="https://ysk-pro.hatenablog.com/entry/bigtweet" target="_blank">サービス紹介ブログ</a>
+      <a href='https://note.mu/ysk1180/n/n551cafc1f8e1' target="_blank">BigTweetチュートリアル</a>
+      <a href="/terms">利用規約</a>
+      <a href="/privacy">プライバシーポリシー</a>
+      <a href="https://twitter.com/ysk_pro" target="_blank">開発者Twitterアカウント</a>
+    </div>
+  </footer>
+</html>
