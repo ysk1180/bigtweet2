@@ -9,9 +9,50 @@ $(function(){
   $('input[name="post[kind]"]:radio').change( function(){
     // var dataUrl = "/assets/" + this.value;
     var kind = this.value;
-    dataUrl = "<%= asset_path 'black' %>";
-    // console.log(dataUrl);
-    // debugger;
+    switch(kind){
+      case 'kokuban':
+        dataUrl = "<%= asset_path 'kokuban' %>";
+        break;
+      case 'rich':
+        dataUrl = "<%= asset_path 'rich' %>";
+        break;
+      case 'sleep':
+        dataUrl = "<%= asset_path 'sleep' %>";
+        break;
+      case 'speech':
+        dataUrl = "<%= asset_path 'speech' %>";
+        break;
+      case 'thinking':
+        dataUrl = "<%= asset_path 'thinking' %>";
+        break;
+      case 'hukidashi':
+        dataUrl = "<%= asset_path 'hukidashi' %>";
+        break;
+      case 'donguri':
+        dataUrl = "<%= asset_path 'donguri' %>";
+        break;
+      case 'cat-bikkuri':
+        dataUrl = "<%= asset_path 'cat-bikkuri' %>";
+        break;
+      case 'muzui':
+        dataUrl = "<%= asset_path 'muzui' %>";
+        break;
+      case 'bikkuri':
+        dataUrl = "<%= asset_path 'bikkuri' %>";
+        break;
+      case 'owata':
+        dataUrl = "<%= asset_path 'owata' %>";
+        break;
+      case 'muscle':
+        dataUrl = "<%= asset_path 'muscle' %>";
+        break;
+      case 'black':
+        dataUrl = "<%= asset_path 'black' %>";
+        break;
+      default:
+        dataUrl = "<%= asset_path 'white' %>";
+        break;
+    }
     var white_word = ["fire", "cat", "lion", "love", "people", "thunder", "star", "sunset", "joy3", "wow", "cow", "think", "black", "brown", "darkblue", "purple", "red", "kokuban", "donguri", "cat-bikkuri", "owata"]
     if (white_word.includes(this.value)){
       $('#preview').css('color', 'white');
@@ -33,7 +74,7 @@ $(function(){
     for(var i=0; i<l; i++){
       r += c[Math.floor(Math.random()*cl)];
     }
-    window.open(`https://twitter.com/share?url=https://bigtweet.herokuapp.com/posts/${r}&hashtags=BigTweet`, '_blank');
+    window.open(`https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`, '_blank');
       html2canvas($('#target').get(0)).then( function (canvas) {
         var imgData = canvas.toDataURL();
         $("#post_picture").val('');
