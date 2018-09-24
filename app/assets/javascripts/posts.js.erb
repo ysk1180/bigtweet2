@@ -7,7 +7,11 @@ $(function(){
 
 $(function(){
   $('input[name="post[kind]"]:radio').change( function(){
-    var dataUrl = "/assets/" + this.value;
+    // var dataUrl = "/assets/" + this.value;
+    var kind = this.value;
+    dataUrl = "<%= asset_path 'black' %>";
+    // console.log(dataUrl);
+    // debugger;
     var white_word = ["fire", "cat", "lion", "love", "people", "thunder", "star", "sunset", "joy3", "wow", "cow", "think", "black", "brown", "darkblue", "purple", "red", "kokuban", "donguri", "cat-bikkuri", "owata"]
     if (white_word.includes(this.value)){
       $('#preview').css('color', 'white');
