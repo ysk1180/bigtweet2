@@ -4,4 +4,8 @@
   "dependencies": {
     "html2canvas": "^1.0.0-alpha.12"
   }
+  "engines": {
+    "yarn": "1.9.4",
+    "node": "9.2.1"
+  }
 }
