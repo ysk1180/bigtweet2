@@ -74,15 +74,15 @@ $(function(){
     for(var i=0; i<l; i++){
       r += c[Math.floor(Math.random()*cl)];
     }
-      html2canvas($('#target').get(0)).then( function (canvas) {
-        var imgData = canvas.toDataURL();
-        $("#post_picture").val('');
-        $("#post_picture").val(imgData);
-        $("#post_random").val('');
-        $("#post_random").val(r);
-        $('#aaa').submit();
-      });
-    window.open(`https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`, '_blank');
+    html2canvas($('#target').get(0)).then( function (canvas) {
+      var imgData = canvas.toDataURL();
+      $("#post_picture").val('');
+      $("#post_picture").val(imgData);
+      $("#post_random").val('');
+      $("#post_random").val(r);
+      $('#aaa').submit();
+    });
+    // window.open(`https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`, '_blank');
   });
 });
 

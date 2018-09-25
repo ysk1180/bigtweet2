@@ -12,9 +12,11 @@ class PostsController < ApplicationController
   def create
     base64 = to_uploaded(post_params[:picture], filename: "aaaa")
     @post = Post.new(post_params)
-    generate(base64, post_params[:random])
+    random = post_params[:random]
+    generate(base64, random)
     if @post.save
-      redirect_to root_path, notice: 'BigTweetありがとうございます！！'
+      # redirect_to root_path, notice: 'BigTweetありがとうございます！！'
+      redirect_to "https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/#{random}&hashtags=BigTweet"
     else
       render :new
     end
