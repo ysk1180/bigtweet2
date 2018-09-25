@@ -15,8 +15,8 @@ class PostsController < ApplicationController
     random = post_params[:random]
     generate(base64, random)
     if @post.save
-      # redirect_to root_path, notice: 'BigTweetありがとうございます！！'
-      redirect_to "https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/#{random}&hashtags=BigTweet"
+      redirect_to root_path, notice: 'BigTweetありがとうございます！！'
+      # redirect_to "https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/#{random}&hashtags=BigTweet"
     else
       render :new
     end
