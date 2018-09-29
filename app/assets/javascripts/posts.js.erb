@@ -80,7 +80,17 @@ $(function(){
       $("#post_picture").val(imgData);
       $("#post_random").val('');
       $("#post_random").val(r);
-      $('#aaa').submit();
+      // $('#aaa').submit();
+
+      $.ajax({
+        url: '/make',
+        type: 'POST',
+        dataType: 'json',
+        async: true,
+        data: {imgData: imgData, r: r},
+      }).done(function(data){
+        location.href = `https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`;
+      });
     });
     // window.open(`https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`, '_blank');
 

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'privacy', to: 'privacies#index', as: :privacy
   resources :posts, only: [:create, :show]
   root to: "posts#new"
+  post 'make', to: 'posts#make'
 end

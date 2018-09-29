@@ -9,17 +9,20 @@ class PostsController < ApplicationController
   def new
   end
 
-  def create
-    base64 = to_uploaded(post_params[:picture], filename: "aaaa")
-    @post = Post.new(post_params)
-    random = post_params[:random]
-    generate(base64, random)
-    if @post.save
+  def make
+    # base64 = to_uploaded(post_params[:picture], filename: "aaaa")
+    # @post = Post.new(post_params)
+    # random = post_params[:random]
+    # generate(base64, random)
+    generate(to_uploaded(params[:imgData], filename: "aaaa"), params[:r])
+    # if @post.save
       # redirect_to root_path, notice: 'BigTweetありがとうございます！！'
-      redirect_to "https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/#{random}&hashtags=BigTweet"
-    else
-      render :new
-    end
+      # redirect_to "https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/#{random}&hashtags=BigTweet"
+      data = []
+      render :json => data
+    # else
+    #   render :new
+    # end
   end
 
   private
@@ -55,12 +58,12 @@ class PostsController < ApplicationController
       bucket = storage.directories.get('bigtweet2-production')
       png_path = 'images/' + random + '.png'
       file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
-      @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production' + "/" + png_path
+      # @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production' + "/" + png_path
     when 'development'
       bucket = storage.directories.get('bigtweet2-development')
       png_path = 'images/' + random + '.png'
       file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
-      @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/bigtweet2-development' + "/" + png_path
+      # @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/bigtweet2-development' + "/" + png_path
     end
   end
 end
