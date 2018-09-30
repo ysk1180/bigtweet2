@@ -83,7 +83,7 @@ $(function(){
       // $('#aaa').submit();
 
       // 処理前に Loading 画像を表示
-      dispLoading("処理中...");
+      dispLoading("BigTweet準備中...");
 
       $.ajax({
         url: '/make',
@@ -96,7 +96,7 @@ $(function(){
         swal({
           type: 'success',
           // title: 'Let\'s BigTweet!',
-          text: 'Let\'s BigTweet!',
+          text: '↓Let\'s BigTweet!↓',
           imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
           imageWidth: 315,
           // imageHeight: 200,
