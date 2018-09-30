@@ -83,7 +83,7 @@ $(function(){
       // $('#aaa').submit();
 
       // 処理前に Loading 画像を表示
-      dispLoading("BigTweet準備中...");
+      dispLoading('BigTweet準備中...画像を作ってるよ！');
 
       $.ajax({
         url: '/make',
@@ -96,7 +96,7 @@ $(function(){
         swal({
           type: 'success',
           // title: 'Let\'s BigTweet!',
-          text: '↓Let\'s BigTweet!↓',
+          text: '画像完成！\n↓Let\'s BigTweet!↓',
           imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
           imageWidth: 315,
           // imageHeight: 200,
@@ -104,7 +104,7 @@ $(function(){
           // animation: false,
           showConfirmButton: false,
           showCloseButton: true,
-          footer: `<a href=https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet>Twitterシェア</a>`,
+          footer: `<a href=https://twitter.com/share?hashtags=BigTweet&url=https://bigtweet2.herokuapp.com/posts/${r} class=share_btn2>Twitterシェア</a>`,
         })
       });
     });

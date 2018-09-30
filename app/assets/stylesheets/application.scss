@@ -113,6 +113,7 @@ button{
   vertical-align: middle;
   overflow: hidden;
   transition: .3s;
+  background: #22b8ff;
 }
 .share_btn2 .fa {line-height:50px}
 .share_btn2:hover{
@@ -120,7 +121,6 @@ button{
   -ms-transform: translateY(-5px);
   transform: translateY(-5px);
 }
-.share_btn2.share {background: #22b8ff;}
 
 #loading {
   display: table;
@@ -139,4 +139,25 @@ button{
   vertical-align: middle;
   padding-top: 140px;
   background: image-url("gif-load.gif") center center no-repeat;
+}
+
+.square_btn{
+  font-size: 20px;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: -webkit-linear-gradient(#6795fd 0%, #67ceff 100%);
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+}
+
+.square_btn:active{
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
 }

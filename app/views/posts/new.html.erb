@@ -9,8 +9,8 @@
 <%= form_with(model: @post, local: true, id: 'aaa') do |form| %>
   <div class="form-group">
     <p>背景画像選択（アップロードも可能です）</p>
-    <label><%= form.radio_button :kind, "kokuban" %><%= image_tag 'kokuban.jpg', width: '90' %></label>
     <label><%= form.radio_button :kind, "rich" %><%= image_tag 'rich.jpg', width: '90' %></label>
+    <label><%= form.radio_button :kind, "kokuban" %><%= image_tag 'kokuban.jpg', width: '90' %></label>
     <label><%= form.radio_button :kind, "sleep" %><%= image_tag 'sleep.jpg', width: '90' %></label>
     <label><%= form.radio_button :kind, "speech" %><%= image_tag 'speech.jpg', width: '90' %></label>
     <label><%= form.radio_button :kind, "thinking" %><%= image_tag 'thinking.jpg', width: '90' %></label>
@@ -58,4 +58,4 @@
 <button id="font-color" class="font-color share_btn"><i class="fa fa-font"></i></button>
 <br>
 <br>
-<button id="save-button" class="share share_btn2"><i class="fa fa-check"></i> 画像を確認する</button>
+<button id="save-button" class="square_btn"><i class="fa fa-check"></i> 画像を確認する</button>
