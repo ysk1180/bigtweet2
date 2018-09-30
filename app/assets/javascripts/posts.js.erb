@@ -89,20 +89,19 @@ $(function(){
         async: true,
         data: {imgData: imgData, r: r},
       }).done(function(data){
-        // location.href = `https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`;
+        swal({
+          title: 'Sweet!',
+          text: 'Modal with a custom image.',
+          imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+          animation: false,
+          footer: `<a href=https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet>Twitterシェア</a>`,
+        })
       });
     });
 
-swal({
-  title: 'Sweet!',
-  text: 'Modal with a custom image.',
-  imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
-  imageWidth: 400,
-  imageHeight: 200,
-  imageAlt: 'Custom image',
-  animation: false,
-  footer: `<a href=https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet>Twitterシェア</a>`,
-})
 
     // window.open(`https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet`, '_blank');
 
