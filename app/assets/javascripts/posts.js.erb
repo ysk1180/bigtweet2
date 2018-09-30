@@ -82,6 +82,9 @@ $(function(){
       // $("#post_random").val(r);
       // $('#aaa').submit();
 
+      // 処理前に Loading 画像を表示
+      dispLoading("処理中...");
+
       $.ajax({
         url: '/make',
         type: 'POST',
@@ -89,14 +92,17 @@ $(function(){
         async: true,
         data: {imgData: imgData, r: r},
       }).done(function(data){
+        removeLoading();
         swal({
-          title: 'Sweet!',
-          text: 'Modal with a custom image.',
+          type: 'success',
+          // title: 'Let\'s BigTweet!',
+          text: 'Let\'s BigTweet!',
           imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
           imageWidth: 400,
           imageHeight: 200,
           imageAlt: 'Custom image',
-          animation: false,
+          // animation: false,
+          showConfirmButton: false,
           footer: `<a href=https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/${r}&hashtags=BigTweet>Twitterシェア</a>`,
         })
       });
@@ -177,3 +183,27 @@ $(function(){
       reader.readAsDataURL(file);
     });
   });
+
+/* ------------------------------
+ Loading イメージ表示関数
+ 引数： msg 画面に表示する文言
+ ------------------------------ */
+function dispLoading(msg){
+  // 引数なし（メッセージなし）を許容
+  if( msg == undefined ){
+    msg = "";
+  }
+  // 画面表示メッセージ
+  var dispMsg = "<div class='loadingMsg'>" + msg + "</div>";
+  // ローディング画像が表示されていない場合のみ出力
+  if($("#loading").length == 0){
+    $("body").append("<div id='loading'>" + dispMsg + "</div>");
+  }
+}
+
+/* ------------------------------
+ Loading イメージ削除関数
+ ------------------------------ */
+function removeLoading(){
+  $("#loading").remove();
+}
