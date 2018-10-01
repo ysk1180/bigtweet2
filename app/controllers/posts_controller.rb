@@ -14,7 +14,8 @@ class PostsController < ApplicationController
     # @post = Post.new(post_params)
     # random = post_params[:random]
     # generate(base64, random)
-    generate(to_uploaded(params[:imgData], filename: "aaaa"), params[:r])
+    # generate(to_uploaded(params[:imgData], filename: "aaaa"), params[:r])
+    generate(to_uploaded(params[:imgData]), params[:r])
     # if @post.save
       # redirect_to root_path, notice: 'BigTweetありがとうございます！！'
       # redirect_to "https://twitter.com/share?url=https://bigtweet2.herokuapp.com/posts/#{random}&hashtags=BigTweet"
@@ -35,14 +36,18 @@ class PostsController < ApplicationController
     params.require(:post).permit(:power, :kind, :picture, :random)
   end
 
-  def to_uploaded(base64_param, filename: )
+  # def to_uploaded(base64_param, filename: )
+  def to_uploaded(base64_param)
     content_type, string_data = base64_param.match(/data:(.*?);(?:.*?),(.*)$/).captures
-    extention = content_type.split('/').second
-    tempfile = Tempfile.new(filename)
+    # extention = content_type.split('/').second
+    # tempfile = Tempfile.new(filename)
+    tempfile = Tempfile.new
     tempfile.binmode
     tempfile << Base64.decode64(string_data)
     tempfile.rewind
-    file_param = { filename: [filename, extention].join('.'), type: content_type, tempfile: tempfile }
+    # file_param = { filename: [filename, extention].join('.'), type: content_type, tempfile: tempfile }
+    # file_param = { type: content_type, tempfile: tempfile }
+    file_param = { type: content_type, tempfile: tempfile }
     ActionDispatch::Http::UploadedFile.new(file_param)
   end
 
@@ -57,12 +62,12 @@ class PostsController < ApplicationController
     when 'production'
       bucket = storage.directories.get('bigtweet2-production')
       png_path = 'images/' + random + '.png'
-      file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
+      bucket.files.create(key: png_path, public: true, body: open(image_uri))
       # @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production' + "/" + png_path
     when 'development'
       bucket = storage.directories.get('bigtweet2-development')
       png_path = 'images/' + random + '.png'
-      file = bucket.files.create(key: png_path, public: true, body: open(image_uri))
+      bucket.files.create(key: png_path, public: true, body: open(image_uri))
       # @post.picture = 'https://s3-ap-northeast-1.amazonaws.com/bigtweet2-development' + "/" + png_path
     end
   end
