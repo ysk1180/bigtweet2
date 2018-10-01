@@ -165,6 +165,13 @@ $(function(){
         $('#preview').css('color', 'black');
       }
     });
+    $("#font").on("click", function () {
+      if($('#preview').css('font-family') === '"Nico Moji"'){
+        $('#preview').css('font-family', "Helvetica Neue");
+      } else {
+        $('#preview').css('font-family', "Nico Moji");
+      }
+    });
   });
 
   $(function(){
