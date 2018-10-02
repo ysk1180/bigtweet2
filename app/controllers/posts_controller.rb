@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     tempfile = Tempfile.new
     tempfile.binmode
     tempfile << Base64.decode64(string_data)
-    tempfile.rewind
+    # tempfile.rewind
     # file_param = { filename: [filename, extention].join('.'), type: content_type, tempfile: tempfile }
     # file_param = { type: content_type, tempfile: tempfile }
     file_param = { type: content_type, tempfile: tempfile }
