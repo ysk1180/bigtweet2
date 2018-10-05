@@ -78,11 +78,6 @@ $(function(){
     }
     html2canvas($('#target').get(0)).then( function (canvas) {
       var imgData = canvas.toDataURL();
-      // $("#post_picture").val('');
-      // $("#post_picture").val(imgData);
-      // $("#post_random").val('');
-      // $("#post_random").val(r);
-      // $('#aaa').submit();
 
       // 処理前に Loading 画像を表示
       dispLoading('BigTweet準備中...画像を作ってるよ！');
@@ -101,9 +96,7 @@ $(function(){
           text: '画像完成！\n↓Let\'s BigTweet!↓',
           imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
           imageWidth: 315,
-          // imageHeight: 200,
           imageAlt: 'Custom image',
-          // animation: false,
           showConfirmButton: false,
           showCloseButton: true,
           footer: `<a href=https://twitter.com/share?text=%23BigTweet&url=https://bigtweet2.herokuapp.com/posts/${r} class=share_btn2>Twitterシェア</a>`,
