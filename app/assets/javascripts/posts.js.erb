@@ -72,9 +72,9 @@ $(function(){
     // 生成する文字列に含める文字セット
     var c = "abcdefghijklmnopqrstuvwxyz0123456789";
     var cl = c.length;
-    var r = "";
+    var hash = "";
     for(var i=0; i<l; i++){
-      r += c[Math.floor(Math.random()*cl)];
+      hash += c[Math.floor(Math.random()*cl)];
     }
     html2canvas($('#target').get(0)).then( function (canvas) {
       var imgData = canvas.toDataURL();
@@ -87,19 +87,19 @@ $(function(){
         type: 'POST',
         dataType: 'json',
         async: true,
-        data: {imgData: imgData, r: r},
+        data: {imgData: imgData, hash: hash},
       }).done(function(data){
         removeLoading();
         swal({
           type: 'success',
           // title: 'Let\'s BigTweet!',
           text: '画像完成！\n↓Let\'s BigTweet!↓',
-          imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${r}.png`,
+          imageUrl: `https://s3-ap-northeast-1.amazonaws.com/bigtweet2-production/images/${hash}.png`,
           imageWidth: 315,
           imageAlt: 'Custom image',
           showConfirmButton: false,
           showCloseButton: true,
-          footer: `<a href=https://twitter.com/share?text=%23BigTweet&url=https://bigtweet2.herokuapp.com/posts/${r} class=share_btn2>Twitterシェア</a>`,
+          footer: `<a href=https://twitter.com/share?text=%23BigTweet&url=https://bigtweet2.herokuapp.com?h=${hash} class=share_btn2>Twitterシェア</a>`,
         })
       });
     });
