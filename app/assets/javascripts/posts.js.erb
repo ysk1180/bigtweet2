@@ -1,5 +1,5 @@
 $(function(){
-  $('#power').bind('keyup change', function(){
+  $('#power').keyup(function(){
     var content = $("#power").val();
     $('#preview').html(content);
   });
@@ -106,78 +106,78 @@ $(function(){
   });
 });
 
-  $(function(){
-    $("#word-bigger").on("click", function () {
-      $('#preview').css('font-size', '+=10');
-    });
-    $("#word-smaller").on("click", function () {
-      $('#preview').css('font-size', '-=10');
-    });
-    $("#up").on("click", function () {
-      $('#preview').css('top', '-=10');
-    });
-    $("#down").on("click", function () {
-      $('#preview').css('top', '+=10');
-    });
-    $("#left").on("click", function () {
-      $('#preview').css('left', '-=10');
-    });
-    $("#right").on("click", function () {
-      $('#preview').css('left', '+=10');
-    });
-    $("#vertical").on("click", function () {
-      if($('#preview').css('writing-mode') === 'horizontal-tb'){
-        $('#preview').css({
-          '-webkit-writing-mode': 'vertical-rl',
-          '-ms-writing-mode': 'tb-rl',
-          'writing-mode': 'vertical-rl',
-          'text-orientation': 'upright'
-        });
-      } else {
-        $('#preview').css({
-          '-webkit-writing-mode': '',
-          '-ms-writing-mode': '',
-          'writing-mode': '',
-          'text-orientation': ''
-        });
-      }
-    });
-    $("#font-color").on("click", function () {
-      if($('#preview').css('color') === 'rgb(0, 0, 0)'){
-        $('#preview').css('color', 'white');
-      } else {
-        $('#preview').css('color', 'black');
-      }
-    });
-    $("#font").on("click", function () {
-      if($('#preview').css('font-family') === '"Nico Moji"'){
-        $('#preview').css('font-family', "Helvetica Neue");
-      } else {
-        $('#preview').css('font-family', "Nico Moji");
-      }
-    });
+$(function(){
+  $("#word-bigger").on("click", function () {
+    $('#preview').css('font-size', '+=10');
   });
+  $("#word-smaller").on("click", function () {
+    $('#preview').css('font-size', '-=10');
+  });
+  $("#up").on("click", function () {
+    $('#preview').css('top', '-=10');
+  });
+  $("#down").on("click", function () {
+    $('#preview').css('top', '+=10');
+  });
+  $("#left").on("click", function () {
+    $('#preview').css('left', '-=10');
+  });
+  $("#right").on("click", function () {
+    $('#preview').css('left', '+=10');
+  });
+  $("#vertical").on("click", function () {
+    if($('#preview').css('writing-mode') === 'horizontal-tb'){
+      $('#preview').css({
+        '-webkit-writing-mode': 'vertical-rl',
+        '-ms-writing-mode': 'tb-rl',
+        'writing-mode': 'vertical-rl',
+        'text-orientation': 'upright'
+      });
+    } else {
+      $('#preview').css({
+        '-webkit-writing-mode': '',
+        '-ms-writing-mode': '',
+        'writing-mode': '',
+        'text-orientation': ''
+      });
+    }
+  });
+  $("#font-color").on("click", function () {
+    if($('#preview').css('color') === 'rgb(0, 0, 0)'){
+      $('#preview').css('color', 'white');
+    } else {
+      $('#preview').css('color', 'black');
+    }
+  });
+  $("#font").on("click", function () {
+    if($('#preview').css('font-family') === '"Nico Moji"'){
+      $('#preview').css('font-family', "Helvetica Neue");
+    } else {
+      $('#preview').css('font-family', "Nico Moji");
+    }
+  });
+});
 
-  $(function(){
-    $('#myfile').change(function(e){
-      //ファイルオブジェクトを取得する
-      var file = e.target.files[0];
-      var reader = new FileReader();
-      //画像でない場合は処理終了
-      if(file.type.indexOf("image") < 0){
-        alert("画像ファイルを指定してください。");
-        return false;
-      }
-      //アップロードした画像を設定する
-      reader.onload = (function(file){
-        return function(e){
-          $("#main-image").attr("src", e.target.result);
-          $("#main-image").attr("title", file.name);
-        };
-      })(file);
-      reader.readAsDataURL(file);
-    });
+$(function(){
+  $('#myfile').change(function(e){
+    //ファイルオブジェクトを取得する
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    //画像でない場合は処理終了
+    if(file.type.indexOf("image") < 0){
+      alert("画像ファイルを指定してください。");
+      return false;
+    }
+    //アップロードした画像を設定する
+    reader.onload = (function(file){
+      return function(e){
+        $("#main-image").attr("src", e.target.result);
+        $("#main-image").attr("title", file.name);
+      };
+    })(file);
+    reader.readAsDataURL(file);
   });
+});
 
 /* ------------------------------
  Loading イメージ表示関数
