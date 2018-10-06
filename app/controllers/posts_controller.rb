@@ -1,31 +1,17 @@
 class PostsController < ApplicationController
-  before_action :new_post, only: [:show, :new]
-
-  def show
-    @hash = params[:id]
-    render :new
-  end
-
   def new
+    @hash = params[:h]
+    @post = Post.new
   end
 
   def make
-    generate(to_uploaded(params[:imgData]), params[:r])
+    generate(to_uploaded(params[:imgData]), params[:hash])
     data = []
     render :json => data
   end
 
   private
 
-  def new_post
-    @post = Post.new
-  end
-
-  def post_params
-    params.require(:post).permit(:power, :kind, :picture, :random)
-  end
-
-  # def to_uploaded(base64_param, filename: )
   def to_uploaded(base64_param)
     content_type, string_data = base64_param.match(/data:(.*?);(?:.*?),(.*)$/).captures
     tempfile = Tempfile.new
@@ -35,7 +21,7 @@ class PostsController < ApplicationController
     ActionDispatch::Http::UploadedFile.new(file_param)
   end
 
-  def generate(image_uri, random)
+  def generate(image_uri, hash)
     storage = Fog::Storage.new(
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
@@ -45,11 +31,11 @@ class PostsController < ApplicationController
     case Rails.env
     when 'production'
       bucket = storage.directories.get('bigtweet2-production')
-      png_path = 'images/' + random + '.png'
+      png_path = 'images/' + hash + '.png'
       bucket.files.create(key: png_path, public: true, body: open(image_uri))
     when 'development'
       bucket = storage.directories.get('bigtweet2-development')
-      png_path = 'images/' + random + '.png'
+      png_path = 'images/' + hash + '.png'
       bucket.files.create(key: png_path, public: true, body: open(image_uri))
     end
   end
