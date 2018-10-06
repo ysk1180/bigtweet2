@@ -1,24 +1,40 @@
-# README
+# BigTweet2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Core Versions
 
-Things you may want to cover:
+| Name | Version |
+|:-|:-|
+| Ruby | 2.5.1 |
+| Rails | 5.2.1 |
+| PostgreSQL | 10.0 以上 |
 
-* Ruby version
+## Required
 
-* System dependencies
+- AWS S3
+    - Access Key
+    - Secret Key
+    
+## Start Application
 
-* Configuration
+### env Setting
 
-* Database creation
+- S3の設定やdatabase設定など
 
-* Database initialization
+### Launch Rails Application
 
-* How to run the test suite
+```bash
+./script/start-application.sh
+./script/run-server.sh
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+or
 
-* Deployment instructions
+```bash
+bundle install --path vendor/bundle
+bundle exec rake db:create db:migrate
+bundle exec rails -s 0.0.0.0 -b 3000
+npm install
+```
 
-* ...
+
+
