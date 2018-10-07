@@ -1,0 +1,26 @@
+<title>Bigtweet2</title>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
+
+<%# ファビコン設定 %>
+<%= favicon_link_tag %>
+
+<%# レスポンシブ対応 %>
+<meta name="viewport" content="width=device-width">
+
+<%# Twitterカード %>
+<% twitter_card = get_twitter_card_info(@hash ? @hash : nil) %>
+<meta name="twitter:card" content=<%=twitter_card[:card]%> />
+<meta property="og:url" content=<%=twitter_card[:url]%> />
+<meta property="og:title" content=<%=twitter_card[:title]%> />
+<meta property="og:description" content=<%=twitter_card[:description]%> />
+<meta property="og:image" content=<%=twitter_card[:image]%> />
+
+<%# Global site tag (gtag.js) - Google Analytics %>
+<%= analytics_init if Rails.env.production? %>
