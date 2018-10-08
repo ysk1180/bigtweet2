@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   # pngイメージのPATHを作成する
   def png_path_generate(random)
-    "images/#{random}/.png"
+    "images/#{random}.png"
   end
 
   # bucket名を取得する
