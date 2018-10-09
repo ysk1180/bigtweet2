@@ -45,6 +45,12 @@ $(function(){
       case 'muscle':
         dataUrl = "<%= asset_path 'muscle' %>";
         break;
+      case 'endo1':
+        dataUrl = "<%= asset_path 'endo1' %>";
+        break;
+      case 'endo2':
+        dataUrl = "<%= asset_path 'endo2' %>";
+        break;
       case 'muscle_man':
         dataUrl = "<%= asset_path 'muscle_man' %>";
         break;
@@ -76,7 +82,7 @@ $(function(){
         dataUrl = "<%= asset_path 'white' %>";
         break;
     }
-    var white_word = ["black", "kokuban", "donguri", "cat-bikkuri", "owata", "muzui"]
+    var white_word = ["black", "kokuban", "donguri", "cat-bikkuri", "owata", "muzui", "endo2"]
     if (white_word.includes(this.value)){
       $('#preview').css('color', 'white');
     } else {
