@@ -21,22 +21,30 @@ class PostsController < ApplicationController
     ActionDispatch::Http::UploadedFile.new(file_param)
   end
 
-  def generate(image_uri, hash)
-    storage = Fog::Storage.new(
+  # S3 Bucket 内に画像を作成
+  def generate(image_uri, random)
+    bucket.files.create(key: png_path_generate(random), public: true, body: open(image_uri))
+  end
+
+  # pngイメージのPATHを作成する
+  def png_path_generate(random)
+    "images/#{random}.png"
+  end
+
+  # bucket名を取得する
+  def bucket
+    # production / development / test
+    environment = Rails.env
+    storage.directories.get("bigtweet2-#{environment}")
+  end
+
+  # storageを生成する
+  def storage
+    Fog::Storage.new(
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       region: 'ap-northeast-1'
     )
-    case Rails.env
-    when 'production'
-      bucket = storage.directories.get('bigtweet2-production')
-      png_path = 'images/' + hash + '.png'
-      bucket.files.create(key: png_path, public: true, body: open(image_uri))
-    when 'development'
-      bucket = storage.directories.get('bigtweet2-development')
-      png_path = 'images/' + hash + '.png'
-      bucket.files.create(key: png_path, public: true, body: open(image_uri))
-    end
   end
 end

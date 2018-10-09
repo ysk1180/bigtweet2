@@ -82,13 +82,6 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     coderay (1.1.2)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     debug_inspector (0.0.3)
@@ -426,7 +419,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 1.2, >= 1.2.3)
   chromedriver-helper
-  coffee-rails (~> 4.2)
   dotenv-rails (~> 2.5)
   fog (~> 2.0)
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
