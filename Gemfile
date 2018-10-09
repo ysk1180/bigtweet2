@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Installation source of gem
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -71,3 +71,6 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# herokuデプロイエラーを避けるために不使用ながら記載
+gem 'coffee-rails', '~> 4.2'
