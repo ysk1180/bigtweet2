@@ -103,6 +103,16 @@ $(function(){
     for(var i=0; i<l; i++){
       hash += c[Math.floor(Math.random()*cl)];
     }
+
+    // クリップボードへのコピー機能
+    $('#copyTarget').css('display', 'block');
+    $('#copyTarget').val(`#BigTweet https://bigtweet2.herokuapp.com?h=${hash}`);
+      var copyTarget = document.getElementById("copyTarget"); // コピー対象のテキストを選択する
+      copyTarget.select();
+      // 選択しているテキストをクリップボードにコピーする
+      document.execCommand("Copy");
+    $('#copyTarget').css('display', 'none');
+
     html2canvas($('#target').get(0)).then( function (canvas) {
       var imgData = canvas.toDataURL();
 
