@@ -22,13 +22,13 @@ class PostsController < ApplicationController
   end
 
   # S3 Bucket 内に画像を作成
-  def generate(image_uri, random)
-    bucket.files.create(key: png_path_generate(random), public: true, body: open(image_uri))
+  def generate(image_uri, hash)
+    bucket.files.create(key: png_path_generate(hash), public: true, body: open(image_uri))
   end
 
   # pngイメージのPATHを作成する
-  def png_path_generate(random)
-    "images/#{random}.png"
+  def png_path_generate(hash)
+    "images/#{hash}.png"
   end
 
   # bucket名を取得する
