@@ -1,7 +1,7 @@
 $(function(){
-  $('#power').keyup(function(){
-    var content = $("#power").val();
-    $('#preview').html(content);
+  $('#input').keyup(function(){
+    var content = $("#input").val();
+    $('#preview-font').html(content);
   });
 });
 
@@ -84,11 +84,11 @@ $(function(){
     }
     var white_word = ["black", "kokuban", "donguri", "cat-bikkuri", "owata", "muzui", "endo2"]
     if (white_word.includes(this.value)){
-      $('#preview').css('color', 'white');
+      $('#preview-font').css('color', 'white');
     } else {
-      $('#preview').css('color', 'black');
+      $('#preview-font').css('color', 'black');
     }
-    $("#main-image").attr('src',dataUrl);
+    $("#preview-image").attr('src',dataUrl);
   });
 });
 
@@ -113,7 +113,7 @@ $(function(){
       document.execCommand("Copy");
     $('#copyTarget').css('display', 'none');
 
-    html2canvas($('#target').get(0)).then( function (canvas) {
+    html2canvas($('#screenshot-target').get(0)).then( function (canvas) {
       var imgData = canvas.toDataURL();
 
       // 処理前に Loading 画像を表示
@@ -145,33 +145,33 @@ $(function(){
 
 $(function(){
   $("#word-bigger").on("click", function () {
-    $('#preview').css('font-size', '+=10');
+    $('#preview-font').css('font-size', '+=10');
   });
   $("#word-smaller").on("click", function () {
-    $('#preview').css('font-size', '-=10');
+    $('#preview-font').css('font-size', '-=10');
   });
   $("#up").on("click", function () {
-    $('#preview').css('top', '-=10');
+    $('#preview-font').css('top', '-=10');
   });
   $("#down").on("click", function () {
-    $('#preview').css('top', '+=10');
+    $('#preview-font').css('top', '+=10');
   });
   $("#left").on("click", function () {
-    $('#preview').css('left', '-=10');
+    $('#preview-font').css('left', '-=10');
   });
   $("#right").on("click", function () {
-    $('#preview').css('left', '+=10');
+    $('#preview-font').css('left', '+=10');
   });
   $("#vertical").on("click", function () {
-    if($('#preview').css('writing-mode') === 'horizontal-tb'){
-      $('#preview').css({
+    if($('#preview-font').css('writing-mode') === 'horizontal-tb'){
+      $('#preview-font').css({
         '-webkit-writing-mode': 'vertical-rl',
         '-ms-writing-mode': 'tb-rl',
         'writing-mode': 'vertical-rl',
         'text-orientation': 'upright'
       });
     } else {
-      $('#preview').css({
+      $('#preview-font').css({
         '-webkit-writing-mode': '',
         '-ms-writing-mode': '',
         'writing-mode': '',
@@ -180,17 +180,17 @@ $(function(){
     }
   });
   $("#font-color").on("click", function () {
-    if($('#preview').css('color') === 'rgb(0, 0, 0)'){
-      $('#preview').css('color', 'white');
+    if($('#preview-font').css('color') === 'rgb(0, 0, 0)'){
+      $('#preview-font').css('color', 'white');
     } else {
-      $('#preview').css('color', 'black');
+      $('#preview-font').css('color', 'black');
     }
   });
   $("#font").on("click", function () {
-    if($('#preview').css('font-family') === '"Nico Moji"'){
-      $('#preview').css('font-family', "Helvetica Neue");
+    if($('#preview-font').css('font-family') === '"Nico Moji"'){
+      $('#preview-font').css('font-family', "Helvetica Neue");
     } else {
-      $('#preview').css('font-family', "Nico Moji");
+      $('#preview-font').css('font-family', "Nico Moji");
     }
   });
 });
@@ -208,8 +208,8 @@ $(function(){
     //アップロードした画像を設定する
     reader.onload = (function(file){
       return function(e){
-        $("#main-image").attr("src", e.target.result);
-        $("#main-image").attr("title", file.name);
+        $("#preview-image").attr("src", e.target.result);
+        $("#preview-image").attr("title", file.name);
       };
     })(file);
     reader.readAsDataURL(file);

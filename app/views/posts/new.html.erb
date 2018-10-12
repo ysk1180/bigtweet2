@@ -40,13 +40,13 @@
 
   <div class="form-group">
     <p>画像内の文字入力</p>
-    <%= form.text_area :power, id: 'power', class:'form-control', rows:"3" %>
+    <%= form.text_area :input, id: 'input', class:'form-control', rows:"3" %>
   </div>
 
   <p>プレビュー</p>
-  <div class="sample" id="target">
-    <img id="main-image" width="315">
-    <p id="preview"></p>
+  <div id="screenshot-target">
+    <img id="preview-image" width="315">
+    <p id="preview-font"></p>
   </div>
   <br>
 <% end %>

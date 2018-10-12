@@ -14,11 +14,15 @@ footer {
   background-color: #DBD4D1;
 }
 
-.sample {
+#screenshot-target {
+  width: 315px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
   position: relative;
 }
 
-.sample p {
+#screenshot-target p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -30,14 +34,7 @@ footer {
   font-size: 35px;
 }
 
-#target {
-  width: 315px;
-  text-align: center;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-#preview {
+#preview-font {
   white-space: pre;
   line-height: 1em;
   text-align: initial;
