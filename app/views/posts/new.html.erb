@@ -1,14 +1,11 @@
 <div>
-  <%= image_tag 'top.png', width: '315' %>
+  <%= image_tag 'top.png', width: '100%' %>
 </div>
-
-<div>
-  <p>文字が入った画像を簡単作成！<br>気軽にBigTweet！！</p>
-</div>
-
+<br>
 <%= form_with(model: @post, local: true, id: 'aaa') do |form| %>
   <div class="form-group">
-    <p>背景画像選択（アップロードも可能です）</p>
+    <p><b><i class="fa fa-bolt"></i> 背景画像を選択しよう <i class="fa fa-bolt"></i></b><br>
+    <small class="text-muted">アップロードも可能です</small></p>
     <label><%= form.radio_button :kind, "rich" %><%= image_tag 'rich.jpg', width: '90' %></label>
     <label><%= form.radio_button :kind, "kokuban" %><%= image_tag 'kokuban.jpg', width: '90' %></label>
     <label><%= form.radio_button :kind, "sleep" %><%= image_tag 'sleep.jpg', width: '90' %></label>
@@ -38,12 +35,14 @@
     <input type="file" id="myfile">
   </div>
 
-  <div class="form-group">
-    <p>画像内の文字入力</p>
+  <br>
+
+  <div class="form-group container">
+    <p><b><i class="fa fa-pencil"></i> 画像内の文字を入力しよう <i class="fa fa-pencil"></i></b><br>
     <%= form.text_area :input, id: 'input', class:'form-control', rows:"3" %>
   </div>
 
-  <p>プレビュー</p>
+  <p><b><i class="fa fa-angle-double-right"></i> プレビュー <i class="fa fa-angle-double-left"></i></b><br>
   <div id="screenshot-target">
     <img id="preview-image" width="315">
     <p id="preview-font"></p>
