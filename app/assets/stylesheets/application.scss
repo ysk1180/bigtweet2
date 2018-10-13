@@ -162,3 +162,15 @@ button{
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
   border-bottom: none;
 }
+
+input[type=radio] {
+  display: none; 	/* ラジオボタンを非表示にする */
+}
+
+.lazy {
+  border: solid 5px #EAEAE0;/*背景と同じにしている*/
+}
+
+input[type="radio"]:checked + .lazy {
+  border: solid 5px #6091d3;/*線*/
+}
