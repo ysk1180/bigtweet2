@@ -174,3 +174,9 @@ input[type=radio] {
 input[type="radio"]:checked + .lazy {
   border: solid 5px #6091d3;/*線*/
 }
+
+@media (min-width: 768px) {
+  .top {
+    width: 768px;
+  }
+}
