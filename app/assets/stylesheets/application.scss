@@ -15,11 +15,17 @@ footer {
 }
 
 #screenshot-target {
-  width: 315px;
+  width: 100%;
   text-align: center;
   display: inline-block;
   margin-bottom: 20px;
   position: relative;
+}
+
+@media (min-width: 576px) {
+  #screenshot-target {
+    width: 576px;
+  }
 }
 
 #screenshot-target p {
@@ -32,6 +38,12 @@ footer {
   margin:0;
   padding:0;
   font-size: 35px;
+}
+
+@media (min-width: 576px) {
+  #screenshot-target p {
+    font-size: 50px;
+  }
 }
 
 #preview-font {
