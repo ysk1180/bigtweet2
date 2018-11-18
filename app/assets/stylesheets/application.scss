@@ -14,6 +14,11 @@ footer {
   background-color: #DBD4D1;
 }
 
+@font-face {
+  font-family: 'fude';
+  src: font-url('fude.otf')
+}
+
 #screenshot-target {
   width: 100%;
   text-align: center;
@@ -51,6 +56,7 @@ footer {
   line-height: 1em;
   text-align: initial;
   font-weight: bold;
+  font-family: fude;
 }
 
 button{

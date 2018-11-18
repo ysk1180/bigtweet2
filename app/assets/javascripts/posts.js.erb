@@ -189,8 +189,10 @@ $(function(){
   $("#font").on("click", function () {
     if($('#preview-font').css('font-family') === '"Nico Moji"'){
       $('#preview-font').css('font-family', "Helvetica Neue");
-    } else {
+    } else if($('#preview-font').css('font-family') === "fude") {
       $('#preview-font').css('font-family', "Nico Moji");
+    } else {
+      $('#preview-font').css('font-family', "fude");
     }
   });
 });
