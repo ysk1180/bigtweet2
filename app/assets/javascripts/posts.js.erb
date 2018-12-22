@@ -15,32 +15,11 @@ $(function(){
       case 'rich':
         dataUrl = "<%= asset_path 'rich' %>";
         break;
-      case 'sleep':
-        dataUrl = "<%= asset_path 'sleep' %>";
-        break;
       case 'speech':
         dataUrl = "<%= asset_path 'speech' %>";
         break;
-      case 'thinking':
-        dataUrl = "<%= asset_path 'thinking' %>";
-        break;
       case 'hukidashi':
         dataUrl = "<%= asset_path 'hukidashi' %>";
-        break;
-      case 'donguri':
-        dataUrl = "<%= asset_path 'donguri' %>";
-        break;
-      case 'cat-bikkuri':
-        dataUrl = "<%= asset_path 'cat-bikkuri' %>";
-        break;
-      case 'muzui':
-        dataUrl = "<%= asset_path 'muzui' %>";
-        break;
-      case 'bikkuri':
-        dataUrl = "<%= asset_path 'bikkuri' %>";
-        break;
-      case 'owata':
-        dataUrl = "<%= asset_path 'owata' %>";
         break;
       case 'muscle':
         dataUrl = "<%= asset_path 'muscle' %>";
@@ -75,6 +54,9 @@ $(function(){
       case 'horse':
         dataUrl = "<%= asset_path 'horse' %>";
         break;
+      case 'gengou':
+        dataUrl = "<%= asset_path 'gengou' %>";
+        break;
       case 'monthend':
         dataUrl = "<%= asset_path 'monthend' %>";
         break;
@@ -100,7 +82,7 @@ $(function(){
         dataUrl = "<%= asset_path 'white' %>";
         break;
     }
-    var white_word = ["black", "kokuban", "donguri", "cat-bikkuri", "owata", "muzui", "endo2"]
+    var white_word = ["black", "kokuban", "endo2"]
     if (white_word.includes(this.value)){
       $('#preview-font').css('color', 'white');
     } else {
