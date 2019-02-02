@@ -6,14 +6,14 @@
 |:-|:-|
 | Ruby | 2.5.1 |
 | Rails | 5.2.1 |
-| PostgreSQL | 10.0 以上 |
+| PostgreSQL | 11.1 |
 
 ## Required
 
 - AWS S3
     - Access Key
     - Secret Key
-    
+
 ## Start Application
 
 ### env Setting
@@ -36,5 +36,6 @@ bundle exec rails -s 0.0.0.0 -b 3000
 npm install
 ```
 
+## Tutorial
 
-
+[【BigTweetチュートリアル２】Ruby on Rails / JavaScriptで簡単なサービスを作ってみよう！（初学者向け）](https://note.mu/ysk1180/n/n7f01daf0788c)
