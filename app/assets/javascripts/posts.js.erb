@@ -124,7 +124,7 @@ $(function(){
         data: {imgData: imgData, hash: hash},
       }).done(function(data){
         removeLoading();
-        swal({
+        Swal.fire({
           type: 'success',
           // title: 'Let\'s BigTweet!',
           text: '画像完成！\n↓Let\'s BigTweet!↓',
